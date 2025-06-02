@@ -41,7 +41,7 @@ select {
   /* Tambahan agar bilah tombol menempel bawah */
   flex-grow: 1;
   align-items: flex-end;
-  padding-bottom: 50px; /* beri jarak bawah tipis, bisa ubah ke 0 kalau mau rapat penuh */
+  padding-bottom: 200px; /* beri jarak bawah tipis, bisa ubah ke 0 kalau mau rapat penuh */
 }
 
 /* Button appearance */
