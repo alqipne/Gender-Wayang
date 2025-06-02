@@ -1,31 +1,33 @@
-// Note data for Gender Wayang (low to high)
+// JavaScript
+
+// Define notes with keyboard key and frequency (in Hz)
 const notes = [
-  { key: "1", name: "F3", freq: 174.61 },
-  { key: "2", name: "G#3", freq: 207.65 },
-  { key: "3", name: "A#3", freq: 233.08 },
-  { key: "4", name: "C4", freq: 261.63 },
-  { key: "5", name: "D#4", freq: 311.13 },
-  { key: "6", name: "F4", freq: 349.23 },
-  { key: "7", name: "G#4", freq: 415.30 },
-  { key: "8", name: "A#4", freq: 466.16 },
-  { key: "9", name: "C5", freq: 523.25 },
-  { key: "0", name: "D#5", freq: 622.25 }
+  { key: "1", name: "1", freq: 174.61 },
+  { key: "2", name: "2", freq: 207.65 },
+  { key: "3", name: "3", freq: 233.08 },
+  { key: "4", name: "4", freq: 261.63 },
+  { key: "5", name: "5", freq: 311.13 },
+  { key: "6", name: "6", freq: 349.23 },
+  { key: "7", name: "7", freq: 415.30 },
+  { key: "8", name: "8", freq: 466.16 },
+  { key: "9", name: "9", freq: 523.25 },
+  { key: "0", name: "0", freq: 622.25 }
 ];
 
-// Initialize AudioContext
+// Create Web Audio context
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-// Enable sound on first user interaction (required on mobile)
+// Ensure audio context is resumed after user interaction (required on mobile)
 document.body.addEventListener('click', () => {
   if (audioCtx.state === 'suspended') {
     audioCtx.resume();
   }
 });
 
-// Play a note with the given frequency and waveform
+// Function to play a note with selected waveform
 function playNote(freq, waveform) {
-  const osc = audioCtx.createOscillator();
-  const gain = audioCtx.createGain();
+  const osc = audioCtx.createOscillator(); // oscillator node
+  const gain = audioCtx.createGain(); // gain node for fade-out effect
 
   osc.type = waveform;
   osc.frequency.value = freq;
@@ -33,20 +35,23 @@ function playNote(freq, waveform) {
   osc.connect(gain);
   gain.connect(audioCtx.destination);
 
+  // Start volume at 0.6 and decay exponentially
   gain.gain.setValueAtTime(0.6, audioCtx.currentTime);
   gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.0);
 
+  // Play note for 1 second
   osc.start();
-  osc.stop(audioCtx.currentTime + 1.0);
+  osc.stop(audioCtx.currentTime + 3.0);
 }
 
-// Populate buttons
+// Get UI elements
 const waveformSelect = document.getElementById("waveform");
 const container = document.getElementById("buttons");
 
+// Create button for each note
 notes.forEach(note => {
   const btn = document.createElement("button");
-  btn.textContent = note.name;
+  btn.textContent = note.key;
   btn.dataset.key = note.key;
   btn.onclick = () => {
     const waveform = waveformSelect.value;
@@ -55,7 +60,7 @@ notes.forEach(note => {
   container.appendChild(btn);
 });
 
-// Keyboard support (keys 1–0)
+// Listen for key presses to trigger notes
 document.addEventListener('keydown', (e) => {
   const key = e.key;
   const note = notes.find(n => n.key === key);
@@ -63,6 +68,7 @@ document.addEventListener('keydown', (e) => {
     const waveform = waveformSelect.value;
     playNote(note.freq, waveform);
 
+    // Visual feedback on button press
     const btn = document.querySelector(`button[data-key="${key}"]`);
     if (btn) {
       btn.style.transform = "scale(0.96)";
