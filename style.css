@@ -7,11 +7,14 @@ body {
   margin: 0;
   padding: 20px;
 
-  /* Tambahan agar body pakai tinggi penuh layar */
+  /* Tambahan agar bisa isi seluruh tinggi layar */
   height: 100vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+
+  /* Tambahan: variabel tinggi tombol */
+  --button-height: 60vh; /* Ubah nilai ini untuk kontrol tinggi tombol */
 }
 
 /* Title style */
@@ -38,10 +41,10 @@ select {
   width: 100%;
   gap: 4px;
 
-  /* Tambahan agar bilah tombol menempel bawah */
+  /* Agar tombol menyentuh bagian bawah layar */
   flex-grow: 1;
   align-items: flex-end;
-  padding-bottom: 200px; /* beri jarak bawah tipis, bisa ubah ke 0 kalau mau rapat penuh */
+  padding-bottom: 10px;
 }
 
 /* Button appearance */
@@ -56,8 +59,8 @@ button {
   cursor: pointer;
   transition: background-color 0.2s, transform 0.1s;
 
-  /* Tambahan agar tombol ikut penuh tinggi container */
-  height: 80%;
+  /* Tambahan untuk kontrol tinggi tombol */
+  height: var(--button-height);
   display: flex;
   align-items: flex-end;
   justify-content: center;
