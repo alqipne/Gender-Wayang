@@ -1,4 +1,4 @@
-/* CSS */ 
+/* CSS */
 /* Global styling */
 body {
   font-family: sans-serif;
@@ -6,15 +6,6 @@ body {
   background-color: #f7f1e3;
   margin: 0;
   padding: 20px;
-
-  /* Tambahan agar bisa isi seluruh tinggi layar */
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-
-  /* Tambahan: variabel tinggi tombol */
-  --button-height: 60vh; /* Ubah nilai ini untuk kontrol tinggi tombol */
 }
 
 /* Title style */
@@ -40,17 +31,12 @@ select {
   justify-content: space-between;
   width: 100%;
   gap: 4px;
-
-  /* Agar tombol menyentuh bagian bawah layar */
-  flex-grow: 1;
-  align-items: flex-end;
-  padding-bottom: 10px;
 }
 
 /* Button appearance */
 button {
   flex: 1;
-  padding: 12px 0;
+  padding: 50px 0;
   font-size: 16px;
   border: none;
   border-radius: 4px;
@@ -58,12 +44,6 @@ button {
   color: white;
   cursor: pointer;
   transition: background-color 0.2s, transform 0.1s;
-
-  /* Tambahan untuk kontrol tinggi tombol */
-  height: var(--button-height);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
 }
 
 /* Button pressed effect */
