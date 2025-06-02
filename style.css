@@ -18,7 +18,7 @@ h2 {
 }
 
 /* Waveform selector */
-controls {
+#controls {
   margin-bottom: 20px;
 }
 
@@ -28,12 +28,13 @@ select {
 }
 
 /* Button container layout */
-buttons {
+#buttons {
   display: flex;
   justify-content: space-between;
   width: 100%;
   gap: 4px;
   align-items: flex-end;
+  padding: 0 10px 0 10px;
 }
 
 /* Button appearance */
