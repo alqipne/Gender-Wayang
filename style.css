@@ -1,27 +1,31 @@
-/* General styles */
+/* CSS */
+/* Global styling */
 body {
   font-family: sans-serif;
   text-align: center;
   background-color: #f7f1e3;
   margin: 0;
   padding: 20px;
+
+  /* Tambahan agar body pakai tinggi penuh layar */
   height: 100vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
 }
 
-/* Title */
+/* Title style */
 h2 {
   margin-bottom: 10px;
   font-size: 20px;
 }
 
-/* Waveform selector */
+/* Controls (dropdown) styling */
 #controls {
   margin-bottom: 20px;
 }
 
+/* Dropdown select */
 select {
   padding: 6px 10px;
   font-size: 14px;
@@ -33,8 +37,11 @@ select {
   justify-content: space-between;
   width: 100%;
   gap: 4px;
+
+  /* Tambahan agar bilah tombol menempel bawah */
+  flex-grow: 1;
   align-items: flex-end;
-  padding: 0 10px 0 10px;
+  padding-bottom: 10px; /* beri jarak bawah tipis, bisa ubah ke 0 kalau mau rapat penuh */
 }
 
 /* Button appearance */
@@ -48,16 +55,24 @@ button {
   color: white;
   cursor: pointer;
   transition: background-color 0.2s, transform 0.1s;
+
+  /* Tambahan agar tombol ikut penuh tinggi container */
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 10px;
 }
 
+/* Button pressed effect */
 button:active {
   transform: scale(0.96);
 }
 
-/* Smaller text for small screens */
+/* Responsive layout for small screens */
 @media (max-width: 500px) {
   button {
-    font-size: 12px;
-    padding-bottom: 6px;
+    font-size: 14px;
+    padding: 10px 0;
   }
 }
