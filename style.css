@@ -1,0 +1,67 @@
+/* General styles */
+body {
+  font-family: sans-serif;
+  text-align: center;
+  background-color: #f7f1e3;
+  margin: 0;
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Title */
+h2 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+/* Waveform selector */
+#controls {
+  margin-bottom: 20px;
+}
+
+select {
+  padding: 6px 10px;
+  font-size: 14px;
+}
+
+/* Button container */
+#buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  gap: 4px;
+  padding: 0 10px 10px 10px; /* Space on left, right, and bottom */
+  align-items: flex-end;      /* Align buttons to bottom */
+}
+
+/* Individual buttons */
+button {
+  flex: 1;
+  height: 100%;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #ffb142;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 8px;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+/* Smaller text for small screens */
+@media (max-width: 500px) {
+  button {
+    font-size: 12px;
+    padding-bottom: 6px;
+  }
+}
